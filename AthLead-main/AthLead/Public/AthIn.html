@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AthIn - Connect & Elevate</title>
+    <link rel="stylesheet" href="AthIn.css"> <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    </head>
+<body> <section class="chat-window">
+        <button class="close">x close</button>
+        <div class="chat">
+            <div class="model">
+                <p>Hi, how can I help you?</p>
+            </div>
+        </div>
+        <div class="input-area">
+            <input placeholder="Ask me anything..." type="text">
+            <button>
+                <img src="send-icon.png" alt="send">
+            </button>
+        </div>
+    </section>
+    <div class="chat-button">
+        <img src="chat-icon.png" alt="start chat">
+    </div>
+    <script type="importmap">
+        {
+          "imports": {
+            "@google/generative-ai": "https://esm.run/@google/generative-ai"
+          }
+        }
+    </script>
+    <script type="module" src="chatb.js"></script>
+
+    <header> <h1>AthIn</h1> <nav> <form id="search-form"> <input type="text" id="search-input" placeholder="Search Athletes"> <button type="submit" class="btn-gradient"><i class="fas fa-search"></i></button> </form>
+            <ul class="headingbtn"> <li><a href="my-profile.html"><i class="fas fa-user"></i> Profile</a></li>
+                <li><a href="network.html"><i class="fas fa-users"></i> Network</a></li>
+                <li><a href="performance.html"><i class="fas fa-chart-line"></i> Performance</a></li>
+                <!-- <li><a href="#"><i class="fas fa-briefcase"></i> Jobs</a></li> -->
+                <li><a href="#"><i class="fas fa-envelope"></i> Messages</a></li>
+                <li><a href="login.html"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main> <div class="main-container"> <div class="content-layout"> <aside class="sidebar-column"> <h3>Suggested Connections</h3> <ul> <li>User 1</li>
+                        <li>User 2</li>
+                        <li>User 3</li>
+                    </ul>
+                </aside>
+
+                <section class="feed-column"> <button id="toggle-post" class="btn-gradient">Create a Post</button> <section id="new-post" class="new-post hidden"> <h3>Create a Post</h3> <textarea id="post-content" placeholder="What's on your mind?" rows="4"></textarea> <button id="submit-post" class="btn-gradient">Post</button> </section>
+
+                    <section class="search-results"> </section>
+
+                    <h3>Feed</h3> <div id="feed-content">
+                        </div>
+                </section>
+
+            </div> </div> </main>
+
+    <footer> <p>&copy; 2025 AthIn</p> </footer>
+
+    <script src="https://www.gstatic.com/firebasejs/9.19.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.19.1/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.19.1/firebase-firestore-compat.js"></script>
+    <script src="AthIn.js"></script>
+</body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile - AthIn</title>
+    <link rel="stylesheet" href="profile.css">
+</head>
+<body>
+    <header>
+        <h1>AthIn</h1>
+        <nav>
+            <ul>
+                <li><a href="AthIn.html">Home</a></li>
+                <li><a href="#">Network</a></li>
+                <li><a href="#">Jobs</a></li>
+                <li><a href="#">Messages</a></li>
+                <li><a href="login.html">Logout</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <main>
+        <div class="main-container"> 
+        <section class="profile">
+            <h2>User Profile</h2>
+            <div id="profile-details">
+                <!-- User details will be displayed here -->
+            </div>
+            <!-- profile.html
+            <button id="follow-button">Follow</button>
+            <p id="follow-status"></p> -->
+
+            <h3>Posts by User</h3>
+            <div id="user-posts">
+                <!-- User's posts will be displayed here -->
+            </div>
+        </section>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2023 AthIn</p>
+    </footer>
+
+
+    <script src="https://www.gstatic.com/firebasejs/9.19.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.19.1/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.19.1/firebase-firestore-compat.js"></script>
+    <script src="profile.js"></script>
+</body>
+</html>

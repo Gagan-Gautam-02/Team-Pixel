@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Profile - AthIn</title>
+    <link rel="stylesheet" href="my-profile.css">
+</head>
+<body>
+    <header>
+        <h1>AthIn</h1>
+        <nav>
+            <ul>
+                <li><a href="AthIn.html">Home</a></li>
+                <li><a href="network.html">Network</a></li>
+                <!-- <li><a href="#">Jobs</a></li> -->
+                <li><a href="#">Messages</a></li>
+                <li><a href="login.html">Logout</a></li>
+            </ul>
+        </nav>
+    </header>
+     
+    <main>
+        <div class="main-container"> 
+        <section class="profile">
+            <div class="profile-header">
+                <div class="profile-image">
+                    <img src="usericon.png" alt="Profile Picture">
+                    <button>Edit</button>
+                </div>
+                <div class="profile-content">
+                    <h2 id="name"></h2>
+                    <p class="profile-role" id="sports"></p>
+                    <p class="profile-age" id="age"></p>
+                    <p class="profile-email" id="email"></p>
+                </div>
+            </div>
+
+            <h3>About</h3>
+            <div class="profile-item">
+                <h4>Experience</h4>
+                <p id="experience"></p>
+            </div>
+            <div class="profile-item">
+                <h4>Achievements</h4>
+                <p id="achievements"></p>
+            </div>
+
+            <h3>Edit Profile</h3>
+            <form id="edit-profile-form">
+                <label for="sports">Sports:</label>
+                <input type="text" id="sports-input" name="sports" placeholder="e.g. Basketball, Soccer">
+
+                <label for="experience">Experience:</label>
+                <textarea id="experience-input" name="experience" rows="3" placeholder="Describe your experience..."></textarea>
+
+                <label for="achievements">Achievements:</label>
+                <textarea id="achievements-input" name="achievements" rows="3" placeholder="List your achievements..."></textarea>
+
+                <button type="submit">Save Changes</button>
+            </form>
+
+            <h3>Your Posts</h3>
+            <div id="my-posts">
+                <!-- User's posts will be displayed here -->
+            </div>
+        </section>
+    </div> 
+    </main>
+
+   
+
+
+    <script src="https://www.gstatic.com/firebasejs/9.19.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.19.1/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.19.1/firebase-firestore-compat.js"></script>
+    <script src="my-profile.js"></script>
+</body>
+</html>

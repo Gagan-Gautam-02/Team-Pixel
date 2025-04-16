@@ -1,0 +1,67 @@
+body {
+    font-family: 'Montserrat', sans-serif;
+    background-color: #ffffff;
+    color: #1e40af;
+    background-image: url('LoginBg.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+}
+
+
+
+.container {
+    background-color: #000000;
+    color: #cbd5e1;
+    border-radius: 1rem;
+    padding: 2rem;
+    width: 300px;
+    text-align: center;
+    border: 2px solid #60a5fa; /* Blue border added */
+}
+
+.container h1 {
+    margin-bottom: 1.5rem;
+}
+
+.container input {
+    background-color: #262626;
+    color: #cbd5e1;
+    border: 1px solid #60a5fa;
+    border-radius: 0.5rem;
+    padding: 0.75rem 1rem;
+    width: 100%;
+    margin-bottom: 1rem;
+    font-size: 1rem;
+    box-sizing: border-box;
+}
+
+.container button {
+    background: linear-gradient(to right, #60a5fa, #3b82f6);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    color: white;
+    padding: 0.75rem 1.5rem;
+    border-radius: 2rem;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    font-size: 1rem;
+}
+
+.container button:hover {
+    background: linear-gradient(to right, #3b82f6, #2563eb);
+}
+
+.container a {
+    color: #60a5fa;
+    text-decoration: none;
+}
+
+.container a:hover {
+    color: #93c5fd;
+}

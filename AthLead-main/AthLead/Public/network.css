@@ -1,0 +1,425 @@
+/* --- Global Styles & Resets --- */
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+/* Import Font if not already globally available */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap');
+
+:root {
+    /* Color Palette (from Target Theme) */
+    --bg-main: #ffffff; /* Original body background - overridden below */
+    --text-main: #1e40af; /* Original body text - overridden below */
+    --bg-container: #000000;
+    --text-container: #cbd5e1;
+    --bg-item: #1a1a1a;      /* Slightly lighter dark for items */
+    --bg-input: #262626;      /* Dark grey for inputs */
+    --accent-blue: #60a5fa;
+    --accent-blue-darker: #3b82f6;
+    --accent-blue-darkest: #2563eb;
+    --accent-blue-lighter: #93c5fd;
+    --border-blue: var(--accent-blue);
+    --success-green: #4ade80; /* Added for Accept */
+    --danger-red: #f87171;   /* Added for Decline */
+
+
+    /* Spacing */
+    --space-xs: 0.5rem;
+    --space-sm: 0.75rem;
+    --space-md: 1rem;
+    --space-lg: 1.5rem;
+    --space-xl: 2rem;
+}
+
+body {
+    font-family: 'Montserrat', sans-serif; /* TARGET FONT */
+    background-color: var(--bg-main); /* Using the variable, but overridden by image */
+    color: var(--text-main); /* Default text color for body */
+    background-image: url('BGmain.jpg'); /* TARGET BACKGROUND */
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+/* --- Layout Structure --- */
+
+/* Fixed Header - Apply theme styles */
+/* NOTE: HTML uses Tailwind classes like 'bg-white shadow-md fixed top-0 w-full z-50'.
+   This CSS will override/complement those where selectors match. */
+header {
+    background-color: var(--bg-container);
+    color: var(--text-container);
+    border-bottom: 2px solid var(--border-blue);
+    padding: var(--space-sm) var(--space-lg); /* Use theme spacing */
+    position: fixed; /* Ensure it stays fixed */
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 100; /* Ensure header is above other content */
+    display: flex; /* Align title and nav */
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Style the H1 in the header if needed, HTML uses text-3xl font-bold text-blue-600 */
+header h1 {
+    margin: 0;
+    font-size: 1.8rem; /* Adjust size as needed, overrides text-3xl */
+    color: var(--accent-blue-lighter); /* Use lighter blue for title */
+    font-weight: 700;
+    /* font-weight: bold; /* Already set in HTML */
+}
+/* Ensure icons in H1 use the same color */
+header h1 i {
+     margin-right: var(--space-xs); /* Add some space */
+}
+nav {
+    display: flex;
+    align-items: center;
+    gap: var(--space-lg); /* Gap between search and nav links */
+}
+
+
+/* Navigation - Apply theme styles */
+nav ul {
+    /* list-style: none;
+    display: flex;
+    margin: 0;
+    padding: 0; */
+    list-style: none;
+    display: flex;
+    align-items: center; /* Vertically align nav items */
+    margin: 0;
+    padding: 0;
+    gap: var(--space-lg); 
+}
+
+nav ul li {
+    margin-left: var(--space-lg); /* Space between nav items */
+    color: var(--bg-main);
+}
+
+nav ul li a {
+    /* text-decoration: none;
+    color: var(--accent-blue); 
+    font-weight: 600;
+    transition: color 0.2s ease;
+    display: flex; 
+    align-items: center; */
+    text-decoration: none;
+    color: var(--bg-main);
+    font-weight: 600;
+    transition: color 0.2s ease;
+    display: flex; /* Align icon and text */
+    align-items: center;
+    gap: var(--space-xs); 
+
+}
+
+/* nav ul li a i {
+    margin-right: var(--space-xs); 
+} */
+
+nav ul li a i { /* Style nav icons */
+    font-size: 1.1rem; /* Adjust icon size */
+    width: 1.2em; /* Ensure consistent icon spacing */
+    text-align: center;
+}
+
+
+nav ul li a:hover {
+    color: var(--accent-blue-lighter); /* TARGET LINK HOVER */
+}
+
+
+/* Main Content Area */
+/* HTML uses 'container mx-auto mt-24 p-6 grid grid-cols-1 md:grid-cols-3 gap-6' */
+/* We'll add the necessary top padding calculation if mt-24 isn't sufficient or reliable */
+main {
+    flex: 1;
+    /* Calculate padding-top based on header height */
+    /* Approx: (1.8rem font * ~1.2 line-height) + (2 * 0.75rem padding) + 2px border = ~2.16rem + 1.5rem + 2px */
+    /* Add extra margin below header */
+    padding-top: calc(3.6rem + var(--space-lg) + 2px + var(--space-xl)); /* Added more space */
+    padding-bottom: var(--space-xl); /* Add space at the bottom */
+    /* Keep container centering and padding from HTML's 'container mx-auto p-6' */
+    /* Styles below apply to direct children or specific IDs/Classes */
+}
+
+
+/* --- Network Page Specific Content --- */
+
+/* Style the main sections (.network, aside) like .profile */
+.network, aside {
+    background-color: var(--bg-container); /* TARGET CONTAINER BG */
+    color: var(--text-container); /* TARGET CONTAINER TEXT */
+    border-radius: var(--space-md); /* Use theme radius */
+    padding: var(--space-lg); /* Use theme padding */
+    margin-bottom: var(--space-lg); /* Use theme spacing */
+    border: 2px solid var(--border-blue); /* TARGET BORDER */
+    /* Remove box-shadow from original network.css */
+}
+
+/* Style headings within these sections */
+.network h2, aside h3 {
+    color: var(--accent-blue-lighter);
+    border-bottom: 1px solid var(--border-blue);
+    padding-bottom: var(--space-sm);
+    margin-top: 0; /* Remove default top margin */
+    margin-bottom: var(--space-lg);
+    font-size: 1.4em; /* Consistent heading size */
+}
+.network div:first-of-type h2 { /* Target the "Your Network" heading specifically if needed */
+     border-bottom: none; /* Maybe remove border if flex layout handles separation */
+     margin-bottom: var(--space-md);
+}
+aside h3 { /* "Pending Requests" */
+     font-size: 1.2em; /* Slightly smaller */
+}
+
+/* Style the search input */
+#search-connections {
+    /* Apply themed input styles */
+    background-color: var(--bg-input);
+    color: var(--text-container);
+    border: 1px solid var(--border-blue);
+    border-radius: var(--space-xs);
+    padding: var(--space-sm); /* Adjusted padding */
+    font-size: 0.95rem; /* Slightly smaller */
+    font-family: inherit;
+    transition: border-color 0.2s ease, background-color 0.2s ease;
+    /* margin-bottom: var(--space-lg); /* Add space below */
+    /* Remove width: 100% if it conflicts with flex layout */
+}
+
+#search-connections::placeholder {
+    color: var(--text-container);
+    opacity: 0.6;
+}
+
+#search-connections:focus {
+    outline: none;
+    border-color: var(--accent-blue-lighter);
+    background-color: #333; /* Slightly lighten on focus */
+}
+
+/* Style the list of followed users */
+#following-list {
+    /* space-y-4 is handled by HTML */
+}
+
+#following-list .followed-user {
+    background-color: var(--bg-item); /* Use item background */
+    border-radius: var(--space-xs);
+    padding: var(--space-md);
+    /* margin-bottom handled by space-y-4 in HTML */
+    border: 1px solid #374151; /* Darker border */
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    transition: background-color 0.2s ease, border-color 0.2s ease; /* Smoother transition */
+    /* cursor: pointer; */ /* Keep if needed */
+}
+
+#following-list .followed-user:hover {
+    background-color: #2a2a2a; /* Slightly lighter item bg on hover */
+    border-color: var(--border-blue);
+    /* transform: none; */ /* Remove transform from original network.css */
+}
+
+/* Style user images in the list */
+#following-list .followed-user img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid var(--accent-blue); /* Add themed border */
+    margin-right: var(--space-md); /* Space between image and name */
+}
+
+/* Style user info container (name, etc.) if wrapped in a div */
+#following-list .followed-user > div { /* Assuming name/details are in a div */
+    flex-grow: 1; /* Allow text to take space */
+    color: var(--text-container);
+}
+/* Add specific class if needed */
+#following-list .followed-user .user-name {
+    font-weight: 600;
+    color: var(--accent-blue-lighter);
+}
+
+
+/* Style pending requests */
+#pending-requests {
+     list-style: none;
+     padding: 0;
+     margin: 0;
+     /* space-y-2 handled by HTML */
+}
+
+#pending-requests li {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: var(--space-sm) 0; /* Add some vertical padding */
+    border-bottom: 1px solid #374151; /* Separator */
+}
+#pending-requests li:last-child {
+    border-bottom: none; /* Remove border on last item */
+}
+
+/* Style Accept/Decline buttons */
+#pending-requests button {
+    background: none;
+    border: none;
+    padding: var(--space-xs);
+    margin-left: var(--space-md);
+    cursor: pointer;
+    font-weight: 600;
+    text-decoration: none; /* Remove default underline */
+    transition: color 0.2s ease, text-decoration 0.2s ease;
+    border-radius: var(--space-xs);
+}
+#pending-requests button:hover {
+     text-decoration: underline; /* Underline on hover */
+}
+
+/* Specific colors for buttons */
+#pending-requests button.accept-button { /* Add class="accept-button" to HTML */
+    color: var(--success-green);
+}
+#pending-requests button.accept-button:hover {
+    color: #6ee7b7; /* Lighter green on hover */
+}
+
+#pending-requests button.decline-button { /* Add class="decline-button" to HTML */
+    color: var(--danger-red);
+}
+#pending-requests button.decline-button:hover {
+    color: #fca5a5; /* Lighter red on hover */
+}
+
+
+/* Footer */
+/* HTML uses 'text-center py-6 mt-8 bg-white shadow-md' */
+footer {
+    background-color: var(--bg-container);
+    color: var(--text-container);
+    text-align: center;
+    padding: var(--space-lg) 0; /* Use theme spacing */
+    margin-top: var(--space-xl);
+    border-top: 1px solid var(--border-blue); /* Add themed border */
+    box-shadow: none; /* Remove shadow if conflicting */
+}
+
+
+/* --- General Input/Textarea styles (copied from target theme for consistency) --- */
+/* Included for completeness, though only #search-connections is used here */
+input, textarea {
+    background-color: var(--bg-input);
+    color: var(--text-container);
+    border: 1px solid var(--border-blue);
+    border-radius: var(--space-xs);
+    padding: var(--space-sm) var(--space-md);
+    width: 100%; /* Default to full width, override locally if needed */
+    margin-bottom: var(--space-md);
+    font-size: 1rem;
+    font-family: inherit;
+    transition: border-color 0.2s ease, background-color 0.2s ease;
+}
+
+input:focus, textarea:focus {
+    outline: none;
+    border-color: var(--accent-blue-lighter);
+    background-color: #333; /* Slightly differentiate focus */
+}
+
+input::placeholder, textarea::placeholder {
+     color: var(--text-container);
+     opacity: 0.6;
+}
+
+textarea {
+    min-height: 80px; /* Adjust height */
+    resize: vertical;
+}
+
+
+/* --- Responsiveness --- */
+@media (max-width: 768px) {
+    header {
+        padding: var(--space-sm) var(--space-md);
+        flex-direction: column; /* Stack title and nav */
+        align-items: flex-start;
+    }
+    header h1 {
+        margin-bottom: var(--space-sm); /* Space below title */
+    }
+    nav ul {
+        flex-wrap: wrap; /* Allow nav items to wrap */
+        padding-top: var(--space-xs);
+    }
+    nav ul li {
+         margin-left: 0; /* Remove left margin */
+         margin-right: var(--space-md); /* Add right margin */
+         margin-bottom: var(--space-xs); /* Space if wrapped */
+    }
+
+    main {
+        /* Adjust padding-top based on potentially taller header */
+        padding-top: calc(8rem + var(--space-lg)); /* Increase top padding */
+        /* HTML handles grid changes (md:grid-cols-3) */
+    }
+
+    /* Adjust container padding on mobile */
+    .network, aside {
+        padding: var(--space-md);
+    }
+    #following-list .followed-user {
+        padding: var(--space-sm);
+    }
+}
+
+@media (max-width: 480px) {
+      header h1 {
+          font-size: 1.5rem;
+      }
+      nav ul li a {
+           font-size: 0.9rem;
+      }
+      main {
+          padding-top: calc(7rem + var(--space-lg)); /* Adjust again */
+      }
+
+      /* Adjust text sizes in sections */
+      .network h2, aside h3 {
+           font-size: 1.2em;
+      }
+       aside h3 {
+           font-size: 1.1em;
+       }
+
+       #search-connections {
+           font-size: 0.9rem;
+       }
+
+       #following-list .followed-user {
+           flex-direction: column; /* Stack image and info */
+           align-items: flex-start; /* Align items left */
+       }
+       #following-list .followed-user img {
+           margin-right: 0;
+           margin-bottom: var(--space-sm); /* Space below image */
+           width: 40px; /* Smaller image */
+           height: 40px;
+       }
+
+      #pending-requests button {
+          font-size: 0.9rem;
+          padding: var(--space-xs) var(--space-sm);
+      }
+}

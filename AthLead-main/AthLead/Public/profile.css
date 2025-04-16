@@ -1,0 +1,297 @@
+/* --- Global Styles & Resets --- */
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+:root {
+    /* Color Palette (Consistent Theme) */
+    --bg-main: #ffffff;
+    --text-main: #1e40af;
+    --bg-container: #000000;
+    --text-container: #cbd5e1;
+    --bg-item: #1a1a1a;
+    --bg-input: #262626;
+    --accent-blue: #60a5fa;
+    --accent-blue-darker: #3b82f6;
+    --accent-blue-darkest: #2563eb;
+    --accent-blue-lighter: #93c5fd;
+    --border-blue: var(--accent-blue);
+
+    /* Spacing */
+    --space-xs: 0.5rem;
+    --space-sm: 0.75rem;
+    --space-md: 1rem;
+    --space-lg: 1.5rem;
+    --space-xl: 2rem;
+}
+
+body {
+    font-family: 'Montserrat', sans-serif; /* TARGET FONT */
+    background-color: var(--bg-main);
+    color: var(--text-main);
+    background-image: url('BGmain.jpg'); /* TARGET BACKGROUND */
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    margin: 0;
+    display: flex; /* For sticky footer */
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+/* --- Layout Structure --- */
+
+/* Fixed Header (Identical to my-profile.css) */
+header {
+    background-color: var(--bg-container);
+    color: var(--text-container);
+    border-bottom: 2px solid var(--border-blue);
+    padding: var(--space-sm) var(--space-lg);
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 100;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 1.8rem;
+    color: var(--accent-blue-lighter);
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    margin: 0;
+    padding: 0;
+}
+
+nav ul li {
+    margin-left: var(--space-lg);
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: var(--accent-blue);
+    font-weight: 600;
+    transition: color 0.2s ease;
+}
+
+nav ul li a:hover {
+    color: var(--accent-blue-lighter);
+}
+
+/* Main Content Area (Identical to my-profile.css) */
+main {
+    flex: 1;
+    padding-top: calc(3.6rem + var(--space-lg) + 2px); /* Adjust if header height changes */
+    padding-bottom: var(--space-xl);
+}
+
+/* Centered Content Wrapper (Applied via HTML change) */
+.main-container {
+    width: 100%;
+    max-width: 900px; /* Consistent max-width */
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: var(--space-lg);
+    padding-right: var(--space-lg);
+}
+
+/* --- Profile Section Styling --- */
+
+/* Main profile container */
+.profile {
+    background-color: var(--bg-container); /* TARGET CONTAINER BG */
+    color: var(--text-container); /* TARGET CONTAINER TEXT */
+    border-radius: var(--space-md);
+    padding: var(--space-lg);
+    margin-bottom: var(--space-xl);
+    border: 2px solid var(--border-blue); /* TARGET BORDER */
+}
+
+/* Section headings inside profile */
+.profile h2,
+.profile h3 {
+    color: var(--accent-blue-lighter);
+    border-bottom: 1px solid var(--border-blue);
+    padding-bottom: var(--space-xs);
+    margin-top: var(--space-lg); /* Add top margin */
+    margin-bottom: var(--space-lg);
+    font-size: 1.4em;
+}
+.profile h2:first-of-type {
+     margin-top: 0; /* No top margin for the very first heading */
+}
+
+
+/* Styling for the div populated by JS */
+#profile-details {
+    background-color: var(--bg-item); /* Use item background */
+    border-radius: var(--space-xs);
+    padding: var(--space-lg);
+    margin-bottom: var(--space-xl);
+    border: 1px solid #374151; /* Darker subtle border */
+}
+
+#profile-details p {
+    color: var(--text-container);
+    font-size: 1em;
+    line-height: 1.6;
+    margin: 0 0 var(--space-md) 0; /* Space below each detail */
+}
+
+#profile-details p:last-of-type {
+     margin-bottom: var(--space-lg); /* More space before button if it's last */
+}
+
+#profile-details p br { /* Style line breaks in experience/achievements */
+    margin-bottom: var(--space-sm);
+    display: block;
+    content: "";
+}
+
+/* Style the dynamically added Follow/Unfollow Button */
+#follow-button {
+    /* Use .btn-gradient styles */
+    background: linear-gradient(to right, var(--accent-blue), var(--accent-blue-darker));
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    color: white;
+    padding: var(--space-sm) var(--space-lg);
+    border-radius: var(--space-xl);
+    border: none;
+    cursor: pointer;
+    font-weight: 600;
+    transition: background 0.2s ease;
+    display: inline-block; /* Or block depending on desired layout */
+    margin-top: var(--space-sm); /* Space above button */
+}
+
+#follow-button:hover {
+    background: linear-gradient(to right, var(--accent-blue-darker), var(--accent-blue-darkest));
+}
+
+/* Style the follow status paragraph (if used) */
+#follow-status {
+     font-size: 0.9em;
+     color: var(--accent-blue-lighter);
+     margin-top: var(--space-sm);
+     min-height: 1.2em; /* Prevent layout shift */
+}
+
+
+/* User's Posts Section */
+#user-posts {
+    margin-top: var(--space-lg);
+}
+
+/* Style individual posts loaded by JS (Identical to my-profile.css) */
+#user-posts .post {
+    background-color: var(--bg-item);
+    border-radius: var(--space-md);
+    padding: var(--space-md);
+    margin-bottom: var(--space-md);
+    border: 1px solid var(--border-blue);
+    color: var(--text-container);
+}
+#user-posts .post p {
+    margin: 0 0 var(--space-xs) 0;
+    line-height: 1.5;
+}
+#user-posts .post p:last-child {
+     margin-bottom: 0;
+}
+
+#user-posts .post small {
+    font-size: 0.8em;
+    color: var(--accent-blue-lighter);
+    opacity: 0.8;
+}
+#user-posts > p { /* Style the "No posts found." message */
+    color: var(--text-container);
+    padding: var(--space-lg);
+    text-align: center;
+    background-color: var(--bg-item);
+    border-radius: var(--space-md);
+    border: 1px solid #374151;
+}
+
+
+/* Footer (Use styles consistent with target theme) */
+footer {
+    background-color: var(--bg-container); /* Dark background */
+    color: var(--text-container); /* Light text */
+    border-top: 2px solid var(--border-blue); /* Blue top border */
+    padding: var(--space-md);
+    text-align: center;
+    flex-shrink: 0; /* Part of sticky footer mechanism */
+    margin-top: auto; /* Pushes footer to bottom in flex container */
+}
+
+footer p {
+    margin: 0;
+    font-size: 0.9em;
+}
+
+/* --- Responsiveness (Identical to my-profile.css for consistency) --- */
+@media (max-width: 768px) {
+    header {
+        padding: var(--space-sm) var(--space-md);
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    header h1 {
+        margin-bottom: var(--space-sm);
+    }
+    nav ul {
+        flex-wrap: wrap;
+        padding-top: var(--space-xs);
+    }
+    nav ul li {
+         margin-left: 0;
+         margin-right: var(--space-md);
+         margin-bottom: var(--space-xs);
+    }
+
+    main {
+        padding-top: calc(8rem + var(--space-lg)); /* Increase top padding */
+    }
+
+    .main-container {
+        max-width: none;
+        padding-left: var(--space-md);
+        padding-right: var(--space-md);
+    }
+
+     /* Adjust profile section padding */
+    .profile, #profile-details {
+        padding: var(--space-md);
+    }
+    #user-posts .post {
+         padding: var(--space-sm);
+    }
+     /* Ensure button padding is suitable */
+    #follow-button {
+        padding: var(--space-xs) var(--space-md);
+    }
+}
+
+@media (max-width: 480px) {
+     header h1 {
+         font-size: 1.5rem;
+     }
+     nav ul li a {
+          font-size: 0.9rem;
+     }
+     main {
+         padding-top: calc(7rem + var(--space-lg)); /* Adjust again */
+     }
+     #follow-button {
+         width: 100%; /* Make button full width on small screens */
+         text-align: center;
+     }
+}

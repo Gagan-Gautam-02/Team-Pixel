@@ -1,0 +1,411 @@
+/* --- Global Styles & Resets --- */
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+:root {
+    /* Color Palette (from Target Theme) */
+    --bg-main: #ffffff;
+    --text-main: #1e40af;
+    --bg-container: #000000;
+    --text-container: #cbd5e1;
+    --bg-item: #1a1a1a;       /* Slightly lighter dark for items */
+    --bg-input: #262626;       /* Dark grey for inputs */
+    --accent-blue: #60a5fa;
+    --accent-blue-darker: #3b82f6;
+    --accent-blue-darkest: #2563eb;
+    --accent-blue-lighter: #93c5fd;
+    --border-blue: var(--accent-blue);
+
+    /* Spacing */
+    --space-xs: 0.5rem;
+    --space-sm: 0.75rem;
+    --space-md: 1rem;
+    --space-lg: 1.5rem;
+    --space-xl: 2rem;
+}
+
+body {
+    font-family: 'Montserrat', sans-serif; /* TARGET FONT */
+    background-color: var(--bg-main);
+    color: var(--text-main);
+    background-image: url('BGmain.jpg'); /* TARGET BACKGROUND */
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+/* --- Layout Structure --- */
+
+/* Fixed Header */
+header {
+    background-color: var(--bg-container);
+    color: var(--text-container);
+    border-bottom: 2px solid var(--border-blue);
+    padding: var(--space-sm) var(--space-lg); /* Adjusted padding slightly */
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 100; /* Ensure header is above other content */
+    display: flex; /* Align title and nav */
+    justify-content: space-between;
+    align-items: center;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 1.8rem; /* Adjust size as needed */
+    color: var(--accent-blue-lighter); /* Use lighter blue for title */
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    margin: 0;
+    padding: 0;
+}
+
+nav ul li {
+    margin-left: var(--space-lg); /* Space between nav items */
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: var(--bg-main); /* TARGET LINK COLOR */
+    font-weight: 600;
+    transition: color 0.2s ease;
+}
+
+nav ul li a:hover {
+    color: var(--accent-blue-lighter); /* TARGET LINK HOVER */
+}
+
+
+/* Main Content Area */
+main {
+    flex: 1;
+    /* Calculate padding-top based on header height */
+    /* Approx: (1.8rem font * ~1.2 line-height) + (2 * 0.75rem padding) + 2px border = ~2.16rem + 1.5rem + 2px */
+    /* Add extra margin below header */
+    padding-top: calc(3.6rem + var(--space-lg) + 2px); /* Adjust if header height changes */
+    padding-bottom: var(--space-xl); /* Add space at the bottom */
+}
+
+/* Centered Content Wrapper - Applied via HTML change */
+.main-container {
+    width: 100%;
+    max-width: 900px; /* Keep max-width from original profile CSS */
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: var(--space-lg);
+    padding-right: var(--space-lg);
+}
+
+/* --- Profile Section Styling --- */
+
+/* Main profile container */
+.profile {
+    background: rgba(0,0,0,0.3);
+    backdrop-filter: blur(10px);
+    color: var(--text-container); /* TARGET CONTAINER TEXT */
+    border-radius: var(--space-md);
+    padding: var(--space-lg);
+    margin-bottom: var(--space-xl);
+    border: 2px solid var(--bg-main); /* TARGET BORDER */
+    /* Removed box-shadow from original profile CSS */
+}
+
+.profile-header {
+    display: flex;
+    align-items: flex-start; /* Align items to the top */
+    gap: var(--space-lg);
+    margin-bottom: var(--space-xl);
+    padding-bottom: var(--space-lg);
+    border-bottom: 1px solid var(--border-blue); /* Separator */
+}
+
+.profile-image {
+    position: relative; /* For positioning edit button */
+    text-align: center;
+    flex-shrink: 0; /* Prevent shrinking */
+}
+
+.profile-image img {
+    width: 120px; /* Slightly larger */
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid var(--accent-blue); /* Add themed border */
+    margin-bottom: var(--space-sm);
+    display: block; /* Remove extra space below image */
+}
+
+.profile-image button { /* Edit button for image */
+     /* Apply themed button style */
+    background: linear-gradient(to right, var(--accent-blue), var(--accent-blue-darker));
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    color: white;
+    padding: var(--space-xs) var(--space-sm); /* Smaller padding */
+    border-radius: var(--space-xl);
+    border: none;
+    cursor: pointer;
+    font-size: 0.8rem;
+    transition: background 0.2s ease;
+    display: block; /* Make it block level */
+    margin: 0 auto; /* Center button below image */
+}
+
+.profile-image button:hover {
+    background: linear-gradient(to right, var(--accent-blue-darker), var(--accent-blue-darkest));
+}
+
+
+.profile-content {
+    flex-grow: 1; /* Allow content to take remaining space */
+}
+
+.profile-content h2 { /* Name */
+    font-size: 1.8em;
+    margin-top: 0;
+    margin-bottom: var(--space-xs);
+    color: var(--accent-blue-lighter); /* Highlight name */
+}
+
+.profile-content p { /* Role, Age, Email */
+    font-size: 1em;
+    margin: var(--space-xs) 0;
+    color: var(--text-container); /* Use light text */
+    line-height: 1.5;
+}
+.profile-content p.profile-role {
+    font-weight: 600; /* Make role bold */
+}
+
+/* Section headings inside profile */
+.profile h3 {
+    color: var(--bg-main);
+    border-bottom: 1px solid var(--border-blue);
+    padding-bottom: var(--space-xs);
+    margin-top: var(--space-xl);
+    margin-bottom: var(--space-lg);
+    font-size: 1.4em;
+}
+
+/* Experience / Achievements items */
+.profile-item {
+    background-color: var(--bg-item); /* Slightly lighter dark bg */
+    border-radius: var(--space-xs);
+    padding: var(--space-md);
+    margin-bottom: var(--space-lg);
+    border: 1px solid #374151; /* Darker border for subtle separation */
+}
+
+.profile-item h4 {
+    margin-top: 0;
+    margin-bottom: var(--space-sm);
+    color: var(--bg-main);
+    font-size: 1.1em;
+}
+
+.profile-item p {
+    color: var(--text-container);
+    font-size: 0.95em;
+    line-height: 1.6;
+    margin: 0;
+}
+.profile-item p br { /* Style line breaks */
+    margin-bottom: var(--space-sm); /* Add space after line breaks */
+    display: block;
+    content: "";
+}
+
+
+/* Edit Profile Form */
+#edit-profile-form {
+    background-color: var(--bg-item); /* Use item background */
+    border-radius: var(--space-xs);
+    padding: var(--space-lg);
+    border: 1px solid #374151;
+    margin-bottom: var(--space-xl);
+}
+
+#edit-profile-form label {
+    font-weight: 600; /* Bold labels */
+    margin-top: var(--space-md);
+    margin-bottom: var(--space-xs);
+    display: block;
+    color: var(--accent-blue-lighter); /* Themed label color */
+}
+
+/* Use inherited input/textarea styles */
+#edit-profile-form input,
+#edit-profile-form textarea {
+     margin-bottom: var(--space-lg); /* More space below inputs */
+}
+
+/* Style form submit button */
+#edit-profile-form button[type="submit"] {
+    /* Use .btn-gradient styles */
+    background: linear-gradient(to right, var(--accent-blue), var(--accent-blue-darker));
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    color: white;
+    padding: var(--space-sm) var(--space-lg);
+    border-radius: var(--space-xl);
+    border: none;
+    cursor: pointer;
+    font-weight: 600;
+    transition: background 0.2s ease;
+    margin-top: var(--space-sm); /* Space above button */
+}
+
+#edit-profile-form button[type="submit"]:hover {
+    background: linear-gradient(to right, var(--bg-main), var(--accent-blue-darkest));
+}
+
+/* User's Posts Section */
+#my-posts {
+    margin-top: var(--space-lg);
+}
+
+/* Style individual posts loaded by JS */
+#my-posts .post {
+    /* Use .post-item styles from target theme */
+    background-color: var(--bg-item);
+    border-radius: var(--space-md);
+    padding: var(--space-md); /* Slightly less padding than main items */
+    margin-bottom: var(--space-md);
+    border: 1px solid var(--bg-main);
+    color: var(--text-container);
+}
+#my-posts .post p {
+    margin: 0 0 var(--space-xs) 0; /* Space below main content */
+    line-height: 1.5;
+}
+#my-posts .post p:last-child {
+     margin-bottom: 0; /* No margin on last p (timestamp) */
+}
+
+#my-posts .post small { /* Timestamp style */
+    font-size: 0.8em;
+    color: var(--accent-blue-lighter);
+    opacity: 0.8;
+}
+#my-posts > p { /* Style the "No posts found." message */
+    color: var(--text-container);
+    padding: var(--space-lg);
+    text-align: center;
+    background-color: var(--bg-item);
+    border-radius: var(--space-md);
+    border: 1px solid #374151;
+}
+
+
+/* --- General Input/Textarea styles (already defined in target theme) --- */
+input, textarea {
+    background-color: var(--bg-input);
+    color: var(--text-container);
+    border: 1px solid var(--border-blue);
+    border-radius: var(--space-xs);
+    padding: var(--space-sm) var(--space-md);
+    width: 100%;
+    margin-bottom: var(--space-md);
+    font-size: 1rem;
+    font-family: inherit;
+    transition: border-color 0.2s ease;
+}
+
+input:focus, textarea:focus {
+    outline: none;
+    border-color: var(--accent-blue-lighter);
+}
+
+textarea {
+    min-height: 80px; /* Adjust height */
+    resize: vertical;
+}
+
+
+/* --- Responsiveness --- */
+@media (max-width: 768px) {
+    header {
+        padding: var(--space-sm) var(--space-md);
+        flex-direction: column; /* Stack title and nav */
+        align-items: flex-start;
+    }
+    header h1 {
+        margin-bottom: var(--space-sm); /* Space below title */
+    }
+    nav ul {
+        flex-wrap: wrap; /* Allow nav items to wrap */
+        padding-top: var(--space-xs);
+    }
+    nav ul li {
+         margin-left: 0; /* Remove left margin */
+         margin-right: var(--space-md); /* Add right margin */
+         margin-bottom: var(--space-xs); /* Space if wrapped */
+    }
+
+    main {
+        /* Adjust padding-top based on potentially taller header */
+        padding-top: calc(8rem + var(--space-lg)); /* Increase top padding */
+    }
+
+    .main-container {
+        max-width: none;
+        padding-left: var(--space-md);
+        padding-right: var(--space-md);
+    }
+
+    .profile-header {
+        flex-direction: column; /* Stack image and content */
+        align-items: center; /* Center items */
+        text-align: center; /* Center text below image */
+    }
+
+    .profile-image {
+        margin-bottom: var(--space-md);
+    }
+
+    .profile-content h2 {
+        font-size: 1.6em;
+    }
+     /* Adjust profile section padding */
+    .profile {
+        padding: var(--space-md);
+    }
+    .profile-item, #edit-profile-form {
+         padding: var(--space-md);
+    }
+    #my-posts .post {
+         padding: var(--space-sm);
+    }
+
+}
+
+@media (max-width: 480px) {
+     header h1 {
+         font-size: 1.5rem;
+     }
+     nav ul li a {
+          font-size: 0.9rem;
+     }
+     main {
+         padding-top: calc(7rem + var(--space-lg)); /* Adjust again */
+     }
+     .profile-image img {
+         width: 100px;
+         height: 100px;
+     }
+     .profile-content h2 {
+         font-size: 1.4em;
+     }
+      input, textarea, button { /* Slightly smaller forms on mobile */
+          font-size: 0.95rem;
+      }
+
+}

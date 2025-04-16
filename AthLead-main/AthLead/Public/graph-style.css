@@ -1,0 +1,256 @@
+body {
+    margin: 0;
+    font-family: 'Segoe UI', sans-serif;
+    background-color: #121212;
+    color: #fff;
+  }
+  
+  header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #1e1e1e;
+    padding: 1rem 2rem;
+  }
+  
+  header h1 {
+    color: #00bcd4;
+  }
+  
+  nav a {
+    margin-left: 20px;
+    color: #ccc;
+    text-decoration: none;
+  }
+  
+  nav a:hover {
+    color: #fff;
+  }
+  
+  .chart-container {
+    margin: 2rem auto;
+    width: 90%;
+    max-width: 1000px;
+    background: #1e1e1e;
+    padding: 20px;
+    border-radius: 12px;
+  }
+  
+  canvas {
+    background-color: #121212;
+  }
+  
+  .ai-btn {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    padding: 14px 26px;
+    background: #03dac6;
+    color: #000;
+    font-weight: bold;
+    border: none;
+    border-radius: 50px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    cursor: pointer;
+    z-index: 1000;
+    transition: background 0.3s ease;
+  }
+  
+  .ai-btn:hover {
+    background: #00bfa5;
+  }
+  
+  .popup {
+    position: fixed;
+    bottom: 90px;
+    right: 20px;
+    width: 360px;
+    max-height: 70vh;
+    background: rgba(30, 30, 30, 0.6);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    color: #eee;
+    border-radius: 20px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.6);
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    pointer-events: none;
+    z-index: 999;
+  
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+  }
+  
+  .popup.open {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+  }
+  
+  .popup-content {
+    position: relative; /* Fix for close button */
+    padding: 1.5rem;
+    overflow-y: auto;
+    flex-grow: 1;
+    font-size: 14px;
+    line-height: 1.6;
+  
+    scrollbar-width: thin;
+    scrollbar-color: #666 rgba(0, 0, 0, 0.2);
+  }
+  
+  .popup-content::-webkit-scrollbar {
+    width: 6px;
+  }
+  
+  .popup-content::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  
+  .popup-content::-webkit-scrollbar-thumb {
+    background-color: #555;
+    border-radius: 10px;
+  }
+  
+  .close-btn {
+    position: absolute;
+    top: 12px;
+    right: 16px;
+    font-size: 20px;
+    cursor: pointer;
+    color: #ccc;
+    background: none;
+    border: none;
+  }
+  
+  .close-btn:hover {
+    color: #fff;
+  }
+  
+  h3 {
+    color: #03dac6;
+    margin-top: 1rem;
+  }
+  
+  .qa-controls {
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid #333;
+  }
+  
+  #ai-response {
+    margin-bottom: 1rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid #333;
+  }
+  
+  .quick-questions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 1rem;
+  }
+  
+  .quick-questions button,
+  .custom-question button {
+    padding: 8px 14px;
+    border: none;
+    border-radius: 20px;
+    background-color: #03dac6;
+    color: #000;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.2s ease, transform 0.1s ease;
+  }
+  
+  .quick-questions button:hover,
+  .custom-question button:hover {
+    background-color: #00bfa5;
+  }
+  
+  .quick-questions button:active,
+  .custom-question button:active {
+    transform: scale(0.97);
+  }
+  
+  .custom-question {
+    display: flex;
+    gap: 10px;
+  }
+  
+  .custom-question input {
+    flex: 1;
+    padding: 8px 12px;
+    border-radius: 20px;
+    border: 1px solid #444;
+    background: #1e1e1e;
+    color: #fff;
+  }
+  
+  /* Responsive adjustment */
+  @media (max-width: 400px) {
+    .popup {
+      width: 95vw;
+      right: 2.5vw;
+      bottom: 80px;
+    }
+  }
+  /* Typewriter Effect Styling */
+.typing {
+    white-space: pre-wrap;
+    border-right: 2px solid #03dac6;
+    animation: blinkCursor 0.8s steps(1) infinite;
+    min-height: 40px; /* Prevents layout shift while typing */
+  }
+  
+  @keyframes blinkCursor {
+    0% {
+      border-color: #03dac6;
+    }
+    50% {
+      border-color: transparent;
+    }
+    100% {
+      border-color: #03dac6;
+    }
+  }
+  /* AI Response Formatting */
+.ai-response h4 {
+    color: #03dac6;
+    font-size: 16px;
+    margin-top: 1rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  .ai-response p {
+    color: #ccc;
+    margin-bottom: 0.8rem;
+    line-height: 1.6;
+  }
+  
+  .ai-response ul {
+    padding-left: 20px;
+    margin-bottom: 1rem;
+  }
+  
+  .ai-response ul li {
+    color: #aaa;
+    margin-bottom: 6px;
+    list-style: disc;
+  }
+  
+  .ai-response strong {
+    color: #ffffff;
+  }
+  
+  /* Optional: Add a light background for each AI section block */
+  .ai-response-block {
+    background: rgba(255, 255, 255, 0.05);
+    padding: 10px 14px;
+    border-radius: 10px;
+    margin-bottom: 1rem;
+    border-left: 4px solid #03dac6;
+  }
+  

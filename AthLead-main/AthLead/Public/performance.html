@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Graph with AI Analysis</title>
+  <link rel="stylesheet" href="graph-style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+
+</head>
+<body>
+  <header>
+    <h1>Athln</h1>
+    <nav>
+      <a href="AthIn.html">Home</a>
+      <a href="network.html">Network</a>
+      <a href="profile.html">Profile</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="chart-container">
+      <canvas id="myChart"></canvas>
+    </section>
+    <section class="chart-container">
+      <canvas id="myChart2"></canvas>
+    </section>
+    <button onclick="openPopup()" class="ai-btn">Analyze with AI</button>
+  </main>
+
+  <!-- AI Analysis Panel -->
+  <div id="aiPopup" class="popup">
+    <div class="popup-content">
+      <span onclick="closePopup()" class="close-btn">&times;</span>
+      <h2>AI Analysis</h2>
+      <div id="analysis">
+        <div id="ai-response" class="ai-response">Loading...</div>
+
+        <div class="qa-controls">
+          <h3>Ask AI</h3>
+          <div class="quick-questions">
+            <button onclick="askDefaultQuestion('How consistent is my performance?')">Consistency</button>
+            <button onclick="askDefaultQuestion('How can I improve my batting?')">Batting Tips</button>
+            <button onclick="askDefaultQuestion('Suggest a cricket workout plan.')">Workout Plan</button>
+          </div>
+          <div class="custom-question">
+            <input type="text" id="customInput" placeholder="Type your question..." />
+            <button onclick="askCustomQuestion()">Ask</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="graph-script.js"></script>
+</body>
+</html>

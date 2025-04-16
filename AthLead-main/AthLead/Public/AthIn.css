@@ -1,0 +1,587 @@
+/* --- Global Styles & Resets --- */
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+:root {
+    /* Color Palette (Consistent Theme) */
+    --bg-main: #ffffff;
+    --text-main: #1e40af;
+    --bg-container: #000000;
+    --text-container: #cbd5e1;
+    --bg-item: #1a1a1a;
+    --bg-input: #262626;
+    --accent-blue: #60a5fa;
+    --accent-blue-darker: #3b82f6;
+    --accent-blue-darkest: #2563eb;
+    --accent-blue-lighter: #93c5fd;
+    --border-blue: var(--accent-blue);
+
+    /* Chat Specific Variables */
+    --chat-grey: #262626;
+    --chat-blue: var(--accent-blue);
+    --chat-black: var(--bg-container);
+    --chat-text-light: var(--text-container);
+
+    /* Spacing */
+    --space-xs: 0.5rem;
+    --space-sm: 0.75rem;
+    --space-md: 1rem;
+    --space-lg: 1.5rem;
+    --space-xl: 2rem;
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    /* color: var(--text-main); Remove direct color if not needed */
+    background-color: var(--bg-main); /* Fallback color */
+    background-image: url('BGmain.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+/* --- Layout Structure --- */
+
+/* Fixed Header */
+header {
+    background-color: var(--bg-container);
+    color: var(--bg-main); /* Use light text for header content */
+    border-bottom: 2px solid var(--border-blue);
+    padding: var(--space-sm) var(--space-lg) ;
+    position: fixed;
+    padding-bottom: 25px;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 100; /* Increased z-index */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 1.8rem;
+    color: var(--accent-blue-lighter);
+    font-weight: 700; /* Bold title */
+}
+
+nav {
+    display: flex;
+    align-items: center;
+    gap: var(--space-lg); /* Gap between search and nav links */
+}
+
+#search-form {
+     display: flex;
+     align-items: center;
+}
+
+#search-input {
+    /* Inherit general input styles */
+    width: 250px; /* Keep specific width from previous attempts */
+    margin-bottom: 0; /* Remove margin from general input style */
+    border-top-right-radius: 0; /* Adjust radius for adjacent button */
+    border-bottom-right-radius: 0;
+}
+
+#search-form button {
+    /* Use .btn-gradient styles with adjustments */
+    background: linear-gradient(to right, var(--accent-blue), var(--accent-blue-darker));
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    color: white;
+    padding: var(--space-sm) var(--space-md); /* Adjust padding to match input height */
+    border-radius: var(--space-xl);
+    border-top-left-radius: 0; /* Adjust radius */
+    border-bottom-left-radius: 0;
+    border: 1px solid var(--border-blue); /* Match input border */
+    border-left: none; /* Remove left border */
+    cursor: pointer;
+    transition: background 0.2s ease;
+    height: calc(2 * var(--space-sm) + 2px + 1rem); /* Match input height approx */
+    display: flex;
+    align-items: center;
+}
+#search-form button:hover {
+     background: linear-gradient(to right, var(--accent-blue-darker), var(--accent-blue-darkest));
+}
+#search-form button i { /* Style search icon */
+     font-size: 1rem;
+}
+
+
+nav ul {
+    list-style: none;
+    display: flex;
+    align-items: center; /* Vertically align nav items */
+    margin: 0;
+    padding: 0;
+    gap: var(--space-lg); /* Gap between nav items */
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: var(--bg-main);
+    font-weight: 600;
+    transition: color 0.2s ease;
+    display: flex; /* Align icon and text */
+    align-items: center;
+    gap: var(--space-xs); /* Space between icon and text */
+}
+
+nav ul li a:hover {
+    color: var(--accent-blue-lighter);
+}
+nav ul li a i { /* Style nav icons */
+    font-size: 1.1rem; /* Adjust icon size */
+    width: 1.2em; /* Ensure consistent icon spacing */
+    text-align: center;
+}
+
+
+/* Main Content Area */
+main {
+    margin-top: 50px;
+    flex: 1;
+    /* Header height approx: (1.8rem * 1.2) + (2 * 0.75rem padding) + 2px border = ~3.6rem */
+    padding-top: calc(3.6rem + var(--space-lg) + 2px); /* Adjusted calculation slightly */
+    padding-bottom: var(--space-xl);
+}
+
+/* Centered Content Wrapper */
+.main-container {
+    width: 100%;
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: var(--space-lg);
+    padding-right: var(--space-lg);
+}
+
+/* Main 2-column Layout */
+.content-layout {
+    display: flex;
+    gap: var(--space-lg);
+}
+
+.feed-column {
+    flex: 1;
+    min-width: 0;
+    display: flex; /* Use flex for internal stacking */
+    flex-direction: column;
+    gap: var(--space-lg); /* Space between items in feed column */
+}
+
+.sidebar-column { /* Styles for the aside element */
+    width: 300px;
+    flex-shrink: 0;
+    /* Apply content block styles */
+    background: rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(10px);
+    color: var(--text-container);
+    border-radius: var(--space-md);
+    padding: var(--space-lg);
+    border: 2px solid var(--bg-main);
+    height: fit-content; /* Make sidebar height based on content */
+}
+
+/* --- Component Styling --- */
+
+/* Headings */
+h3 { /* General heading style for sections */
+    color: var(--bg-main);
+    border-bottom: 1px solid var(--border-blue);
+    padding-bottom: var(--space-xs);
+    margin-top: 0; /* Remove default top margin */
+    margin-bottom: var(--space-lg);
+    font-size: 1.4em;
+    font-weight: 600;
+}
+.sidebar-column h3 {
+    margin-top: 0;
+}
+
+/* Sidebar specific styles */
+.sidebar-column ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+.sidebar-column ul li {
+    background:rgba(0, 0, 0, 0.3);/* Item background for list items */
+    backdrop-filter: blur(10px);
+    padding: var(--space-sm) var(--space-md);
+    margin-bottom: var(--space-sm);
+    border-radius: var(--space-xs);
+    border: 1px solid var(--bg-main);
+    color: var(--text-container);
+    font-size: 0.95em;
+}
+
+/* Main Feed Column Sections */
+.feed-column > section,
+.feed-column > div#feed-content { /* Target direct children sections/divs */
+    /* Apply content block styles */
+    background: rgba(0,0,0,0.3);
+    backdrop-filter: blur(10px);
+    color: var(--text-container);
+    border-radius: var(--space-md);
+    padding: var(--space-lg);
+    border: 2px solid var(--bg-main);
+}
+
+/* New Post Section specific styles */
+.new-post {
+    /* Inherits .feed-column > section styles */
+    margin-bottom: var(--space-lg); /* Space below if visible */
+}
+.new-post h3 {
+    margin-top: 0;
+}
+.new-post textarea {
+    /* Inherits general textarea styles */
+    min-height: 80px; /* Adjust height */
+}
+.new-post button#submit-post {
+    /* Inherits .btn-gradient */
+    display: block; /* Make button block */
+    width: fit-content; /* Size to content */
+    margin-top: var(--space-md);
+}
+button#toggle-post { /* Style the toggle button */
+     margin-bottom: var(--space-lg);
+}
+
+/* Search Results Section */
+.search-results {
+     /* Inherits .feed-column > section styles */
+     min-height: 50px; /* Give it some min height */
+}
+.search-results p { /* Style "No athletes found." */
+     text-align: center;
+     font-style: italic;
+     opacity: 0.8;
+}
+.search-results .athlete { /* Style individual result item */
+     background-color: var(--bg-item);
+     padding: var(--space-md);
+     margin-bottom: var(--space-md);
+     border-radius: var(--space-xs);
+     border: 1px var(--bg-main);
+}
+.search-results .athlete p {
+     margin: 0 0 var(--space-xs) 0;
+     font-style: normal;
+     opacity: 1;
+     text-align: left;
+}
+
+
+/* Feed Content & Post Items */
+#feed-content {
+     /* Inherits .feed-column > section styles, remove default padding if items have it */
+     padding: 0; /* Remove padding if .post-item has its own */
+     border: none; /* Remove border if .post-item has its own */
+     background: none; /* Remove bg if .post-item has its own */
+}
+
+.post-item { /* Styling for dynamically added posts */
+    background-color:#222A38;
+    border-radius: var(--space-md);
+    padding: var(--space-lg);
+    margin-bottom: var(--space-lg);
+    border: 1px solid var(--bg-main);
+    color: var(--text-container);
+}
+.post-item > *:last-child {
+     margin-bottom: 0; /* Remove margin from last element */
+}
+.post-item img.profilepic { /* Use existing profilepic styles */
+    height: 24px;
+    width: 24px;
+    border-radius: 50%;
+    vertical-align: middle;
+    margin-right: var(--space-xs);
+    object-fit: cover;
+}
+.post-item p {
+     margin: 0 0 var(--space-sm) 0;
+     line-height: 1.5;
+     word-wrap: break-word;
+}
+.post-item p strong a { /* Link on username */
+    color: var(--bg-main);
+
+}
+.post-item p strong a:hover {
+      color: #93C5FD;
+}
+
+.post-item small { /* Timestamp */
+    font-size: 0.8em;
+    color: var(--bg-main);
+    opacity: 0.8;
+    display: block; /* Put timestamp on its own line */
+    margin-top: var(--space-sm);
+    margin-bottom: var(--space-md);
+}
+.post-item > div:nth-of-type(1) { /* Container for Like/Comment buttons */
+    margin-bottom: var(--space-md);
+}
+.post-item button { /* Like/Comment buttons */
+    border: 1px solid var(--border-blue);
+    border-radius: var(--space-xs);
+    background-color: transparent;
+    color: var(--accent-blue);
+    padding: var(--space-xs) var(--space-md);
+    cursor: pointer;
+    margin-right: var(--space-sm);
+    font-size: 0.9em;
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+.post-item button:hover {
+    background-color: var(--bg-input);
+    color: var(--accent-blue-lighter);
+}
+
+/* Comments Section within Post Item */
+.post-item .hidden { /* Ensure hidden class works */
+     display: none;
+}
+.post-item div[id^="comments-"] {
+     margin-top: var(--space-md);
+     padding-top: var(--space-md);
+     border-top: 1px solid #374151; /* Separator for comments */
+}
+.post-item div[id^="comments-"] input {
+     /* Inherit general input style */
+     margin-bottom: var(--space-sm); /* Space below input */
+}
+.post-item div[id^="comments-"] button {
+     /* Style comment submit button */
+      background: linear-gradient(to right, var(--accent-blue), var(--accent-blue-darker));
+      color: white;
+      border: none;
+}
+.post-item div[id^="comments-"] button:hover {
+       background: linear-gradient(to right, var(--accent-blue-darker), var(--accent-blue-darkest));
+}
+.post-item div[id^="comment-list-"] .comment-item {
+      margin-top: var(--space-md);
+      padding: var(--space-sm);
+      background-color: var(--bg-input); /* Slightly different bg for comments */
+      border-radius: var(--space-xs);
+}
+.post-item div[id^="comment-list-"] .comment-item p {
+      margin: 0 0 var(--space-xs) 0;
+      font-size: 0.9em;
+}
+.post-item div[id^="comment-list-"] .comment-item p strong {
+       color: var(--accent-blue-lighter);
+}
+.post-item div[id^="comment-list-"] .comment-item p small {
+       margin-top: 0;
+       margin-bottom: 0;
+       font-size: 0.75em;
+}
+
+
+/* --- Forms (General Input/Textarea) --- */
+input, textarea {
+    background-color: var(--bg-input);
+    color: var(--text-container);
+    border: 1px solid var(--border-blue);
+    border-radius: var(--space-xs);
+    padding: var(--space-sm) var(--space-md);
+    width: 100%;
+    margin-bottom: var(--space-md);
+    font-size: 1rem;
+    font-family: inherit;
+    transition: border-color 0.2s ease;
+}
+input:focus, textarea:focus {
+    outline: none;
+    border-color: var(--accent-blue-lighter);
+}
+textarea {
+    min-height: 100px;
+    resize: vertical;
+}
+
+/* --- Buttons (General Gradient) --- */
+.btn-gradient {
+    background: linear-gradient(to right, var(--accent-blue), var(--accent-blue-darker));
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    color: white;
+    padding: var(--space-sm) var(--space-lg);
+    border-radius: var(--space-xl);
+    border: none;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+    text-align: center;
+    transition: background 0.2s ease;
+    font-weight: 600; /* Add font weight */
+}
+.btn-gradient:hover {
+    background: linear-gradient(to right, var(--accent-blue-darker), var(--accent-blue-darkest));
+}
+
+.hidden {
+    display: none;
+}
+
+/* --- Footer --- */
+footer { /* Target footer tag */
+    background-color: var(--bg-container);
+    color: var(--text-container);
+    border-top: 2px solid var(--border-blue);
+    padding: var(--space-md);
+    text-align: center;
+    flex-shrink: 0;
+    margin-top: auto; /* Push to bottom */
+}
+footer p {
+    margin: 0;
+    font-size: 0.9em;
+}
+
+/* --- Chat Styles (Copied from previous improvement) --- */
+.chat-open .chat-window { display: flex; }
+.chat-button {
+    position: fixed; bottom: var(--space-lg); right: var(--space-lg); z-index: 998;
+    background-color: var(--chat-black); color: var(--chat-text-light);
+    height: 60px; width: 60px; border-radius: 50%; display: flex;
+    justify-content: center; align-items: center; cursor: pointer;
+    border: 1px solid var(--chat-blue); box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.2s ease, box-shadow 0.2s ease;
+}
+.chat-button img { width: 30px; height: 30px; }
+.chat-button:hover { background-color: var(--bg-item); box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); }
+.chat-window {
+    display: none; flex-direction: column; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+    background-color: var(--chat-black); border: 1px solid var(--chat-blue); color: var(--chat-text-light);
+    border-radius: var(--space-md); position: fixed; z-index: 999;
+    bottom: calc(60px + var(--space-lg) + var(--space-sm)); right: var(--space-lg);
+    height: 500px; width: 350px; overflow: hidden;
+}
+.chat-window * { font-family: 'Montserrat', sans-serif; }
+.chat-window .close {
+    border: none; padding: var(--space-sm) 0; background-color: var(--bg-item);
+    color: var(--chat-text-light); border-bottom: 1px solid var(--chat-blue);
+    cursor: pointer; font-weight: bold; text-align: center; transition: background-color 0.2s ease;
+}
+.chat-window .close:hover { background-color: var(--chat-grey); }
+.chat { flex: 1; padding: var(--space-xs) var(--space-md); overflow-y: auto; }
+.chat::-webkit-scrollbar { width: 8px; }
+.chat::-webkit-scrollbar-track { background: var(--bg-item); border-radius: 4px; }
+.chat::-webkit-scrollbar-thumb { background-color: var(--chat-blue); border-radius: 4px; border: 2px solid var(--bg-item); }
+.chat p {
+    border-radius: var(--space-md); width: auto; max-width: 85%; margin: var(--space-sm) 0;
+    font-size: 0.95rem; padding: var(--space-sm) var(--space-md); line-height: 1.4; word-wrap: break-word;
+}
+.chat div.model p { background-color: var(--chat-grey); color: var(--chat-text-light); margin-right: auto; }
+.chat div.user { display: flex; justify-content: flex-end; }
+.chat div.user p { background-color: var(--chat-blue); color: white; margin-left: auto; }
+.chat div.error p { font-size: 0.9rem; text-align: center; color: #f87171; background-color: transparent; width: 100%; max-width: 100%; padding: var(--space-sm) 0; }
+.input-area { display: flex; align-items: center; padding: var(--space-md); border-top: 1px solid var(--chat-blue); background-color: var(--bg-item); }
+.input-area input {
+    flex: 1; border: 1px solid var(--accent-blue); background-color: var(--chat-grey); color: var(--chat-text-light);
+    border-radius: var(--space-xl); padding: var(--space-sm) var(--space-lg); font-size: 0.95rem;
+    margin-bottom: 0; margin-right: var(--space-sm);
+}
+.input-area input:focus { border-color: var(--accent-blue-lighter); outline: none; }
+.input-area button {
+    height: calc(2 * var(--space-sm) + 2px + 1rem); width: calc(2 * var(--space-sm) + 2px + 1rem);
+    border-radius: 50%; border: none; background-color: var(--chat-blue); color: white; display: flex;
+    justify-content: center; align-items: center; cursor: pointer; transition: background-color 0.2s ease; flex-shrink: 0;
+}
+.input-area button img { width: 20px; height: 20px; filter: brightness(0) invert(1); }
+.input-area button:hover { background-color: var(--accent-blue-darker); box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); }
+
+/* --- Loader (Keep if used) --- */
+.loader { /* ... */ }
+@keyframes l1 { /* ... */ }
+
+
+/* --- Responsiveness --- */
+@media (max-width: 768px) {
+    header {
+        padding: var(--space-sm) var(--space-md);
+        /* Consider stacking search/nav below title if needed */
+        flex-wrap: wrap; /* Allow wrapping */
+    }
+    header h1 {
+         width: 100%; /* Make title take full width */
+         text-align: center; /* Center title */
+         margin-bottom: var(--space-sm);
+    }
+    nav {
+         width: 100%;
+         justify-content: space-between; /* Space out search and nav links */
+         gap: var(--space-md);
+    }
+     #search-form {
+         flex-grow: 1; /* Allow search to grow */
+     }
+     #search-input {
+         width: 100%; /* Allow input to fill space */
+     }
+     nav ul {
+         gap: var(--space-md); /* Reduce gap */
+         flex-wrap: wrap; /* Allow nav links to wrap */
+     }
+     nav ul li a {
+         font-size: 0.9rem;
+     }
+
+    main {
+        padding-top: calc(6rem + var(--space-lg)); /* Adjust based on taller wrap header */
+    }
+    .main-container {
+        padding-left: var(--space-md);
+        padding-right: var(--space-md);
+    }
+    .content-layout {
+        flex-direction: column; /* Stack columns */
+    }
+    .sidebar-column {
+        width: 100%; /* Full width sidebar */
+        order: 2; /* Optional: Move sidebar below feed */
+    }
+    .feed-column {
+         order: 1; /* Optional: Ensure feed is first */
+    }
+
+    /* Adjust chat position */
+     .chat-button { bottom: var(--space-md); right: var(--space-md); height: 50px; width: 50px; }
+     .chat-button img { width: 25px; height: 25px; }
+     .chat-window { width: calc(100% - 2 * var(--space-md)); bottom: calc(50px + var(--space-md) + var(--space-sm)); right: var(--space-md); height: 70vh; }
+
+    /* Reduce padding on blocks */
+     .sidebar-column, .feed-column > section, .post-item { padding: var(--space-md); }
+     .btn-gradient { padding: var(--space-xs) var(--space-md); }
+}
+
+@media (max-width: 480px) {
+      nav {
+          flex-direction: column; /* Stack search and nav links */
+          align-items: stretch;
+      }
+      nav ul {
+          justify-content: center; /* Center nav links */
+          margin-top: var(--space-sm);
+      }
+       main {
+          padding-top: calc(8rem + var(--space-lg)); /* Adjust again */
+       }
+       input, textarea, button { /* Slightly smaller forms */
+           font-size: 0.95rem;
+       }
+}
+
