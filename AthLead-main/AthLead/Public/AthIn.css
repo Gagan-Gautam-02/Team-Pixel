@@ -504,9 +504,7 @@ footer p {
 .input-area button img { width: 20px; height: 20px; filter: brightness(0) invert(1); }
 .input-area button:hover { background-color: var(--accent-blue-darker); box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); }
 
-/* --- Loader (Keep if used) --- */
-.loader { /* ... */ }
-@keyframes l1 { /* ... */ }
+
 
 
 /* --- Responsiveness --- */

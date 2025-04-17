@@ -44,10 +44,11 @@ body {
 /* Fixed Header (Identical to my-profile.css) */
 header {
     background-color: var(--bg-container);
-    color: var(--text-container);
+    color: var(--bg-main); /* Use light text for header content */
     border-bottom: 2px solid var(--border-blue);
     padding: var(--space-sm) var(--space-lg);
     position: fixed;
+    padding-bottom: 25px;
     width: 100%;
     top: 0;
     left: 0;
@@ -61,24 +62,76 @@ header h1 {
     margin: 0;
     font-size: 1.8rem;
     color: var(--accent-blue-lighter);
+    font-weight: 700;
+}
+
+nav {
+    display: flex;
+    align-items: center;
+    gap: var(--space-lg);
+}
+
+#search-form {
+    display: flex;
+    align-items: center;
+}
+
+#search-input {
+    width: 250px;
+    margin-bottom: 0;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+}
+
+#search-form button {
+    background: linear-gradient(to right, var(--accent-blue), var(--accent-blue-darker));
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    color: white;
+    padding: var(--space-sm) var(--space-md);
+    border-radius: var(--space-xl);
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+    border: 1px solid var(--border-blue);
+    border-left: none;
+    cursor: pointer;
+    transition: background 0.2s ease;
+    height: calc(2 * var(--space-sm) + 2px + 1rem);
+    display: flex;
+    align-items: center;
+}
+#search-form button:hover {
+    background: linear-gradient(to right, var(--accent-blue-darker), var(--accent-blue-darkest));
+}
+#search-form button i {
+    font-size: 1rem;
 }
 
 nav ul {
     list-style: none;
     display: flex;
+    align-items: center;
     margin: 0;
     padding: 0;
-}
-
-nav ul li {
-    margin-left: var(--space-lg);
+    gap: var(--space-lg);
 }
 
 nav ul li a {
     text-decoration: none;
-    color: var(--accent-blue);
+    color: var(--bg-main);
     font-weight: 600;
     transition: color 0.2s ease;
+    display: flex;
+    align-items: center;
+    gap: var(--space-xs);
+}
+
+nav ul li a:hover {
+    color: var(--accent-blue-lighter);
+}
+nav ul li a i {
+    font-size: 1.1rem;
+    width: 1.2em;
+    text-align: center;
 }
 
 nav ul li a:hover {

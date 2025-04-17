@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Coach Video Lectures | Athlete Network</title>
+  <link rel="stylesheet" href="Lecture.css"> <!-- Link to the CSS below -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+  <!-- Optional: Font Awesome for icons -->
+  <script src="https://kit.fontawesome.com/yourkit.js" crossorigin="anonymous"></script>
+</head>
+<body>
+  <header>
+    <h1>Athlete Network</h1>
+    <nav>
+      <form id="search-form">
+        <input id="search-input" type="text" placeholder="Search lectures...">
+        <button type="submit"><i class="fa fa-search"></i></button>
+      </form>
+      <ul>
+        <li><a href="AthIn.html"><i class="fa fa-home"></i>Home</a></li>
+        <li><a href="my-profile.html"><i class="fa fa-user"></i>Profile</a></li>
+        <li><a href="Market.html"><i class="fa fa-shopping-cart"></i>Buy</a></li>
+        <!-- <li><a href="video-lectures.html"><i class="fa fa-video"></i>Lectures</a></li> -->
+      </ul>
+    </nav>
+  </header>
+  <main>
+    <div class="main-container">
+      <section class="hero-section">
+        <h2>Video Lectures by Top Coaches</h2>
+        <p>Learn from the best! Browse and watch exclusive sports lectures, drills, and training tips uploaded by professional coaches.</p>
+        <!-- <a href="#upload" class="btn-gradient upload-btn"><i class="fa fa-upload"></i> Upload Your Lecture</a> -->
+      </section>
+      <section class="video-grid-section">
+        <h3>Featured Lectures</h3>
+        <div class="video-grid">
+          <div class="video-card">
+            <div class="video-thumb">
+              <video src="lecture1.mp4" controls poster="thumb1.jpg"></video>
+            </div>
+            <div class="video-info">
+              <h4>Speed & Agility Drills</h4>
+              <p>Coach Priya Sharma</p>
+              <span class="duration">12:45</span>
+            </div>
+          </div>
+          <div class="video-card">
+            <div class="video-thumb">
+              <video src="lecture2.mp4" controls poster="thumb2.jpg"></video>
+            </div>
+            <div class="video-info">
+              <h4>Strength Training for Runners</h4>
+              <p>Coach Arjun Patel</p>
+              <span class="duration">09:30</span>
+            </div>
+          </div>
+          <div class="video-card">
+            <div class="video-thumb">
+              <video src="lecture3.mp4" controls poster="thumb3.jpg"></video>
+            </div>
+            <div class="video-info">
+              <h4>Cricket Batting Masterclass</h4>
+              <p>Coach Meera Singh</p>
+              <span class="duration">15:10</span>
+            </div>
+          </div>
+          <!-- Add more video cards as needed -->
+        </div>
+      </section>
+      <!-- <section id="upload" class="upload-section">
+        <h3>Upload Your Video Lecture</h3>
+        <form class="upload-form">
+          <label for="title">Title</label>
+          <input type="text" id="title" name="title" required placeholder="Lecture Title">
+          <label for="coach">Coach Name</label>
+          <input type="text" id="coach" name="coach" required placeholder="Your Name">
+          <label for="video">Video File</label>
+          <input type="file" id="video" name="video" accept="video/*" required>
+          <label for="desc">Description</label>
+          <textarea id="desc" name="desc" rows="3" placeholder="Brief description"></textarea>
+          <button type="submit" class="btn-gradient"><i class="fa fa-upload"></i> Upload</button>
+        </form>
+      </section> -->
+    </div>
+  </main>
+  <footer>
+    <p>&copy; 2025 Athlete Network. All rights reserved.</p>
+  </footer>
+</body>
+</html>
