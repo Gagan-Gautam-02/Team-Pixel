@@ -45,6 +45,24 @@
 
 ---
 
+## 🚧 Future Roadmap
+
+- 🏅 **Expand to All Sports Categories**  
+  Broaden support beyond core sports to include niche and emerging disciplines.
+
+- 🎥 **Educational Video Library & Premium Subscription**  
+  Provide exclusive access to drills, tutorials, and expert sessions for subscribed users.
+
+- 🎓 **Regular Scholarship Contests**  
+  Launch monthly contests to reward outstanding athletes with scholarships and sponsorships.
+
+- 🛒 **Sports Gear Marketplace with How-To Guides**  
+  Offer curated, affordable gear with detailed usage instructions to empower self-reliant training.
+
+- 💼 **Monetization via Brand Partnerships & Product Promotions**  
+  Collaborate with sports brands for meaningful promotions that benefit athletes and partners.
+___
+
 ## 🛠️ Technologies Used
 
 - **Frontend**: HTML, CSS, JavaScript
