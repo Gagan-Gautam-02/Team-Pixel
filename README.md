@@ -69,7 +69,7 @@ ___
 - **Backend**: Firebase (Authentication, Realtime Database)
 - **AI**: Gemini API (Google) for Chatbot and AI Coach
 - **Visualization**: Chart.js
-- **Deployment**: Vercel
+- **Deployment**: Vercel (https://ath-lead.vercel.app/)
 
 ---
 
