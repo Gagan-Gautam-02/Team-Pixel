@@ -57,3 +57,7 @@
 
 [![MEOW](https://img.youtube.com/vi/s2USMgKSt54/0.jpg)](https://www.youtube.com/watch?v=s2USMgKSt54)
 
+---
+## 📈 Presentation
+
+[![image](https://github.com/user-attachments/assets/bdb00d01-a8e5-4c71-9e2d-baddfbb8e857)](https://www.canva.com/design/DAGkz_5r8fg/sAxlYIZXq3UeXC7Y_BpSKw/view?utm_content=DAGkz_5r8fg&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=h0c217d3324)
