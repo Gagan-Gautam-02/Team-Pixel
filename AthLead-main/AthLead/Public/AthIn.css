@@ -35,7 +35,7 @@ body {
     font-family: 'Montserrat', sans-serif;
     /* color: var(--text-main); Remove direct color if not needed */
     background-color: var(--bg-main); /* Fallback color */
-    background-image: url('BGmain.jpg');
+    background-image: url('Bgmain.jpg');
     background-size: cover;
     background-repeat: no-repeat;
     background-attachment: fixed;
