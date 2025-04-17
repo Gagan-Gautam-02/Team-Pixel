@@ -35,7 +35,7 @@ body {
     font-family: 'Montserrat', sans-serif; /* TARGET FONT */
     background-color: var(--bg-main); /* Using the variable, but overridden by image */
     color: var(--text-main); /* Default text color for body */
-    background-image: url('BGmain.jpg'); /* TARGET BACKGROUND */
+    background-image: url('Bgmain.jpg'); /* TARGET BACKGROUND */
     background-size: cover;
     background-repeat: no-repeat;
     background-attachment: fixed;

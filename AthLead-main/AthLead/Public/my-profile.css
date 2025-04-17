@@ -29,7 +29,7 @@ body {
     font-family: 'Montserrat', sans-serif; /* TARGET FONT */
     background-color: var(--bg-main);
     color: var(--text-main);
-    background-image: url('BGmain.jpg'); /* TARGET BACKGROUND */
+    background-image: url('Bgmain.jpg'); /* TARGET BACKGROUND */
     background-size: cover;
     background-repeat: no-repeat;
     background-attachment: fixed;
