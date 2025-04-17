@@ -1,4 +1,5 @@
 # 🏅 [Athlead](https://ath-lead.vercel.app/) - Maximize Your Athletic Potential
+[![Contributors](https://img.shields.io/github/contributors/Gagan-Gautam-02/Team-Pixel.svg)](https://github.com/Gagan-Gautam-02/Team-Pixel/graphs/contributors)
 
 
 **Athlead** provides cutting-edge tools to **track, analyze, and enhance** your athletic performance. Combining AI-powered insights, real-time data visualization, and a vibrant community of athletes, Athlead is the all-in-one platform to help you reach the next level.
